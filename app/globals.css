@@ -1,0 +1,205 @@
+:root {
+  color-scheme: dark;
+  --surface: #080808;
+  --surface-alt: #111;
+  --accent-red: rgba(255, 54, 87, 0.8);
+  --accent-gold: #f4c542;
+  --muted-blue: rgba(72, 122, 255, 0.85);
+  --text-primary: #f5f5f5;
+  --text-secondary: rgba(245, 245, 245, 0.75);
+  font-size: 16px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: radial-gradient(circle at top, #161616, #050505 70%);
+  color: var(--text-primary);
+  min-height: 100vh;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(2rem, 3vw, 3.5rem);
+  padding: clamp(2rem, 5vw, 4rem) clamp(1.25rem, 6vw, 6rem) 4rem;
+}
+
+h1 {
+  font-size: clamp(2.75rem, 6vw, 4rem);
+  letter-spacing: -0.04em;
+  margin: 0 0 0.5rem;
+}
+
+p {
+  margin: 0;
+  line-height: 1.6;
+  color: var(--text-secondary);
+}
+
+.grid {
+  display: grid;
+  gap: clamp(2rem, 3vw, 3rem);
+}
+
+@media (min-width: 1024px) {
+  .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  background: linear-gradient(180deg, rgba(32, 32, 32, 0.45), rgba(12, 12, 12, 0.85));
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 24px;
+  padding: 1.5rem;
+  box-shadow: 0 28px 60px rgba(0, 0, 0, 0.35);
+  overflow: hidden;
+}
+
+.card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.08),
+    rgba(255, 255, 255, 0) 45%,
+    rgba(255, 255, 255, 0) 55%,
+    rgba(255, 255, 255, 0.25)
+  );
+  mix-blend-mode: screen;
+  opacity: 0.25;
+}
+
+.card h2 {
+  margin: 0;
+  font-size: 1.35rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.card small {
+  text-transform: uppercase;
+  letter-spacing: 0.24em;
+  font-size: 0.65rem;
+  color: rgba(255, 255, 255, 0.32);
+  font-weight: 600;
+}
+
+.frame {
+  position: relative;
+  border-radius: 18px;
+  overflow: hidden;
+  background: #000;
+  isolation: isolate;
+}
+
+.frame.vertical {
+  aspect-ratio: 9 / 16;
+}
+
+.frame.horizontal {
+  aspect-ratio: 16 / 9;
+}
+
+.frame img,
+.frame svg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.overlay-gradient {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0) 25%, rgba(0, 0, 0, 0.55));
+  pointer-events: none;
+}
+
+.treadmill-frame::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg width='160' height='160' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='rgba(255,54,87,0.55)' stroke-width='2'%3E%3Cpath d='M0 40 Q80 20 160 40'/%3E%3Cpath d='M0 80 Q80 60 160 80'/%3E%3Cpath d='M0 120 Q80 100 160 120'/%3E%3Cpath d='M40 0 Q60 80 40 160'/%3E%3Cpath d='M80 0 Q100 80 80 160'/%3E%3Cpath d='M120 0 Q140 80 120 160'/%3E%3C/g%3E%3C/svg%3E");
+  mix-blend-mode: screen;
+  opacity: 0.75;
+  transform: scale(1.3);
+}
+
+.treadmill-frame::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(200deg, rgba(255, 54, 87, 0.2), rgba(0, 0, 0, 0) 55%);
+  mix-blend-mode: color;
+}
+
+.escalator-frame::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(circle at 30% 20%, rgba(90, 150, 255, 0.35), transparent 60%),
+    radial-gradient(circle at 80% 80%, rgba(15, 32, 68, 0.7), transparent 70%);
+  mix-blend-mode: screen;
+}
+
+.escalator-frame::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(195deg, rgba(16, 27, 51, 0.2), rgba(0, 0, 0, 0.75));
+}
+
+.factory-frame::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(circle at top center, rgba(255, 198, 95, 0.35), transparent 65%);
+}
+
+.factory-frame::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(160deg, rgba(166, 117, 44, 0.45), rgba(13, 13, 13, 0.45));
+  mix-blend-mode: color;
+}
+
+.infographic {
+  background: #020202;
+  padding: 1.2rem 1.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.infographic text {
+  font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+}
